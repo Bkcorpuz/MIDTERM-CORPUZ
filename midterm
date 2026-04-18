@@ -1,0 +1,60 @@
+# Intramurals Tracker
+
+# 1. Input section and coordinator
+section = input("Enter Section: ")
+coordinator = input("Enter Coordinator: ")
+
+# 2. Sports list (hardcoded)
+sports = ["Basketball", "Volleyball", "Badminton", "Chess", "Table Tennis"]
+category = ["Team", "Team", "Individual", "Individual", "Individual"]
+
+print("\n--- SPORTS EVENTS ---")
+for i in range(5):
+    print(i + 1, "-", sports[i], "(", category[i], ")")
+
+# variables
+total_points = 0
+game_count = 1
+
+print("\n--- ENTER GAME RESULTS ---")
+
+# 3. Loop for 4 games
+for i in range(4):
+    print("\nGame", i + 1)
+    sport_num = int(input("Enter sport number (1-5) or 0 to skip: "))
+
+    if sport_num == 0:
+        print("Game skipped.")
+        continue
+
+    if sport_num >= 1 and sport_num <= 5:
+        opponent = input("Enter opponent section: ")
+        result = input("Enter result (W/L): ")
+
+        if result == "W" or result == "w":
+            points = 3
+        else:
+            points = 0
+
+        total_points = total_points + points
+
+        # display each game immediately (simple style)
+        print("Recorded:", sports[sport_num - 1], "-", opponent, "-", result, "-", points, "pts")
+
+    else:
+        print("Invalid sport number!")
+
+# 7. Determine standing
+if total_points >= 9:
+    standing = "GOLD CONTENDER"
+elif total_points >= 6:
+    standing = "SILVER PUSH"
+else:
+    standing = "KEEP FIGHTING!"
+
+# 8. Final Output
+print("\n===== GAME RESULTS BOARD =====")
+print("Section:", section)
+print("Coordinator:", coordinator)
+print("Total Points:", total_points)
+print("Standing:", standing)/
